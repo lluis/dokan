@@ -8,7 +8,7 @@ namespace Dokan
     public class DokanOptions
     {
         public ushort Version;
-        public ushort ThreadCount;
+        public uint ThreadCount;
         public bool DebugMode;
         public bool UseStdErr;
         public bool UseAltStream;
@@ -18,6 +18,7 @@ namespace Dokan
         public string VolumeLabel;
         public string FileSystemName;
         public string MountPoint;
+		public char DriveLetter;
     }
 
 
@@ -56,7 +57,7 @@ namespace Dokan
     struct DOKAN_OPTIONS
     {
         public ushort Version;
-        public ushort ThreadCount; // number of threads to be used
+        public uint ThreadCount; // number of threads to be used
         public uint Options;
         public ulong Dummy1;
         [MarshalAs(UnmanagedType.LPWStr)]

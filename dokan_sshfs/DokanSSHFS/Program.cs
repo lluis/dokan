@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Windows.Forms;
+using Dokan;
 
 namespace DokanSSHFS
 {
@@ -16,7 +17,7 @@ namespace DokanSSHFS
         {
             //ConsoleWin.Open();
 
-            string[] args = System.Environment.GetCommandLineArgs();
+			string[] args = System.Environment.GetCommandLineArgs();
             foreach (string arg in args)
             {
                 if (arg == "-sd")
@@ -43,7 +44,7 @@ namespace DokanSSHFS
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SettingForm());
 
-            /*
+//            /*
             ParseArgs parser = new ParseArgs();
             parser.parse(args);
 
@@ -58,21 +59,22 @@ namespace DokanSSHFS
             opt.DebugMode = parser.debug;
             opt.DriveLetter = parser.drive;
             opt.ThreadCount = parser.threads;
-
-            SSHFS sshfs = new SSHFS(parser.user,
-                parser.host, parser.port, parser.identity, parser.root, parser.debug);
+			// string user, string host, int port, string password, string identity,
+			// string passphrase, string root, bool debug
+            SSHFS sshfs = new SSHFS();
+			sshfs.Initialize(parser.user,
+                parser.host, parser.port, null, parser.identity, null, parser.root, parser.debug);
 
             if (sshfs.SSHConnect())
             {
-                DokanNet.DokanNet.DokanMain(opt, sshfs);
+                DokanNet.DokanMain(opt, sshfs);
             }
             else
             {
                 Console.Error.WriteLine("failed to connect");
             }
-
             Console.Error.WriteLine("sshfs exit");
-             */
+//             */
         }
     }
 }
