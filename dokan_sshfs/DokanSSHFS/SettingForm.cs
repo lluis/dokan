@@ -227,7 +227,7 @@ namespace DokanSSHFS
                             msg = "Dokan Error";
                             break;
                         case DokanNet.DOKAN_DRIVE_LETTER_ERROR:
-                            msg = "Dokan drive letter error";
+                            msg = "Dokan drive letter error" + opt_.MountPoint;
                             break;
                         case DokanNet.DOKAN_DRIVER_INSTALL_ERROR:
                             msg = "Dokan driver install error";
@@ -241,7 +241,9 @@ namespace DokanSSHFS
                     }
                     MessageBox.Show(msg, "Error");
                     Application.Exit();
-                }
+                } else {
+					MessageBox.Show(opt_.MountPoint, "Error");
+				}
                 Debug.WriteLine("DokanNet.Main end");
             }
         }

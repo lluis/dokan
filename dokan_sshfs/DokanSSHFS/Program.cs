@@ -42,38 +42,42 @@ namespace DokanSSHFS
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new SettingForm());
+//            Application.Run(new SettingForm());
+			Application.Run(new BlindConnect());
 
 //            /*
-            ParseArgs parser = new ParseArgs();
-            parser.parse(args);
-
-            if (!parser.CheckParam())
-            {
-                parser.help();
-                return;
-            }
-
-            DokanOptions opt = new DokanOptions();
-
-            opt.DebugMode = parser.debug;
-            opt.DriveLetter = parser.drive;
-            opt.ThreadCount = parser.threads;
+//            ParseArgs parser = new ParseArgs();
+//            parser.parse(args);
+//
+//            if (!parser.CheckParam())
+//            {
+//                parser.help();
+//                return;
+//            }
+//
+//            DokanOptions opt = new DokanOptions();
+//
+//            opt.DebugMode = parser.debug;
+//            opt.DriveLetter = parser.drive;
+//            opt.ThreadCount = parser.threads;
+			
+			
 			// string user, string host, int port, string password, string identity,
 			// string passphrase, string root, bool debug
-            SSHFS sshfs = new SSHFS();
-			sshfs.Initialize(parser.user,
-                parser.host, parser.port, null, parser.identity, null, parser.root, parser.debug);
-
-            if (sshfs.SSHConnect())
-            {
-                DokanNet.DokanMain(opt, sshfs);
-            }
-            else
-            {
-                Console.Error.WriteLine("failed to connect");
-            }
-            Console.Error.WriteLine("sshfs exit");
+//            SSHFS sshfs = new SSHFS();
+//			sshfs.Initialize(parser.user,
+//                parser.host, parser.port, null, parser.identity, null, parser.root, parser.debug);
+//
+//            if (sshfs.SSHConnect())
+//            {
+//                DokanNet.DokanMain(opt, sshfs);
+//            }
+//            else
+//            {
+//                Console.Error.WriteLine("failed to connect");
+//            }
+//            Console.Error.WriteLine("sshfs exit");
+			
 //             */
         }
     }
