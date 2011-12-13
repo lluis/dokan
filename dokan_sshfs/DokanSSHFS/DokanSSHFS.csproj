@@ -97,15 +97,14 @@
       <DependentUpon>SettingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserInfo.cs" />
-    <Compile Include="BlindConnect.cs" />
-    <Compile Include="BlindConnect.Designer.cs" />
+    <Compile Include="Systray.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SettingForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BlindConnect.resx" />
+    <EmbeddedResource Include="Systray.resx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon2.ico" />

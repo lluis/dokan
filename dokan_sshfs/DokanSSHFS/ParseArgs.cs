@@ -4,15 +4,15 @@ using System.Text;
 
 namespace DokanSSHFS
 {
-    class ParseArgs
+    public class ParseArgs
     {
         public string host;
         public int port;
         public string user;
         public string identity;
-        public char drive;
+        public string drive;
         public bool debug;
-        public uint threads;
+        public ushort threads;
         public string root;
 
         public ParseArgs()
@@ -20,7 +20,7 @@ namespace DokanSSHFS
             threads = 0;
             debug = false;
             port = 22;
-            drive = 'n';
+            drive = "n";
             root = "";
         }
 
@@ -47,13 +47,13 @@ namespace DokanSSHFS
                             identity = args[++i];
                             break;
                         case 'd':
-                            drive = args[++i][0];
+                            drive = args[++i];
                             break;
                         case 'r':
                             root = args[++i];
                             break;
                         case 't':
-                            threads = uint.Parse(args[++i]);
+                            threads = ushort.Parse(args[++i]);
                             break;
                     }
                 }
@@ -74,14 +74,14 @@ namespace DokanSSHFS
                 }
                 else
                 {
-                    drive = args[i][0];
+                    drive = args[i];
                 }
             }
         }
 
         public bool CheckParam()
         {
-            if (host == null || port == 0 || user == null || identity == null || drive == '\0')
+            if (host == null || port == 0 || user == null || identity == null || drive == null || drive[0] == '\0')
                 return false;
             return true;
         }
