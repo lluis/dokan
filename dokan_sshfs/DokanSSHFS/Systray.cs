@@ -91,10 +91,8 @@ namespace DokanSSHFS
 
             sshfs = new SSHFS();
             opt = new DokanOptions();
-
             opt.DebugMode = parser.debug;
             opt.UseAltStream = true;
-//            opt.MountPoint = "n:\\";
             opt.ThreadCount = 0;
             opt.UseKeepAlive = true;
 

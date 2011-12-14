@@ -43,7 +43,6 @@ namespace DokanSSHFS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 //			Application.Run(new SettingForm());
-//			Application.Run(new Systray());
 
 //            /*
             ParseArgs parser = new ParseArgs();
