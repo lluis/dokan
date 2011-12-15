@@ -15,6 +15,7 @@ namespace DokanSSHFS
     {
         private SSHFS sshfs;
         private DokanOptions opt;
+		private Settings settings = new Settings();
         private Thread dokan;
         private bool isUnmounted_ = false;
 
@@ -28,18 +29,27 @@ namespace DokanSSHFS
             FormBorderStyle = FormBorderStyle.FixedSingle;
             //notifyIcon1.Icon = SystemIcons.Application;
             notifyIcon1.Visible = true;
+			SettingLoad();
         }
 
         private void cancel_Click(object sender, EventArgs e)
         {
-            notifyIcon1.Visible = false;
-            Application.Exit();
+            //notifyIcon1.Visible = false;
+            //Application.Exit();
+			this.Hide();
         }
 
         private void connect_Click(object sender, EventArgs e)
         {
-            this.Hide();
+			this.Hide();
+			settingSave();
 
+			if (!isUnmounted_)
+			{
+				this.Unmount();
+            	isUnmounted_ = true;
+			}
+			
             sshfs = new SSHFS();
             opt = new DokanOptions();
 
@@ -66,7 +76,6 @@ namespace DokanSSHFS
                     message += "Drive letter is invalid\n";
 
                 opt.MountPoint = string.Format("{0}:\\", letter);
-                unmount.Text = "Unmount (" + opt.MountPoint + ")";
             }
 
             opt.ThreadCount = DokanSSHFS.DokanThread;
@@ -92,8 +101,6 @@ namespace DokanSSHFS
 
             if (sshfs.SSHConnect())
             {
-                unmount.Visible = true;
-                mount.Visible = false;
                 isUnmounted_ = false;
 
                 MountWorker worker = null;
@@ -124,7 +131,7 @@ namespace DokanSSHFS
                 {
                     Debug.WriteLine("DokanReveMountPoint failed\n");
                     // If DokanUmount failed, call sshfs.Unmount to disconnect.
-                    ;// sshfs.Unmount(null);
+                    // sshfs.Unmount(null);
                 }
                 else
                 {
@@ -134,8 +141,6 @@ namespace DokanSSHFS
                 // Call here explicitly.
                 sshfs.Unmount(null);
             }
-            unmount.Visible = false;
-            mount.Visible = true;
         }
 
 
@@ -177,9 +182,7 @@ namespace DokanSSHFS
                     }
                     MessageBox.Show(msg, "Error");
                     Application.Exit();
-                } else {
-					MessageBox.Show(opt_.MountPoint, "Error");
-				}
+                }
                 Debug.WriteLine("DokanNet.Main end");
             }
         }
@@ -192,7 +195,6 @@ namespace DokanSSHFS
             if (!isUnmounted_)
             {
                 Debug.WriteLine("unmount is visible");
-                unmount.Visible = false;
                 Unmount();
                 isUnmounted_ = true;
             }
@@ -211,17 +213,36 @@ namespace DokanSSHFS
         }
 
         
-        private void unmount_Click(object sender, EventArgs e)
+		private void config_Click(object sender, EventArgs e)
+		{
+			Debug.WriteLine("config_Click");
+			this.Show();
+		}
+
+		private void settingSave()
         {
-            Debug.WriteLine("unmount_Click");          
-            this.Unmount();
-            isUnmounted_ = true;
+            Setting s = settings[0];
+
+            s.Name = "b2brouter";
+
+            s.User = user.Text;
+            s.Port = 22;
+
+            s.Drive = drive.Text;
+
+            settings.Save();
+
+            SettingLoad();
+        }
+		
+		private void SettingLoad()
+        {
+			settings.Load();
+            Setting s = settings[0];
+
+            user.Text = s.User;
+            drive.Text = s.Drive;
         }
 
-        private void mount_Click(object sender, EventArgs e)
-        {
-            unmount.Visible = false;
-            this.Show();
-        }
     }
 }

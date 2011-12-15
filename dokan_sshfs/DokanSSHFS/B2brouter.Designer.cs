@@ -7,15 +7,8 @@ namespace DokanSSHFS
 {
     partial class B2brouter
     {
-        /// <summary>
-        /// 必要なデザイナ変数です。
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// 使用中のリソースをすべてクリーンアップします。
-        /// </summary>
-        /// <param name="disposing">マネージ リソースが破棄される場合 true、破棄されない場合は false です。</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -27,10 +20,6 @@ namespace DokanSSHFS
 
         #region Windows フォーム デザイナで生成されたコード
 
-        /// <summary>
-        /// デザイナ サポートに必要なメソッドです。このメソッドの内容を
-        /// コード エディタで変更しないでください。
-        /// </summary>
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
@@ -42,8 +31,7 @@ namespace DokanSSHFS
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.notifyMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exit = new System.Windows.Forms.ToolStripMenuItem();
-            this.unmount = new System.Windows.Forms.ToolStripMenuItem();
-            this.mount = new System.Windows.Forms.ToolStripMenuItem();
+            this.config = new System.Windows.Forms.ToolStripMenuItem();
             this.label5 = new System.Windows.Forms.Label();
             this.drive = new System.Windows.Forms.ComboBox();
 			this.publicKey = new System.Windows.Forms.TextBox();
@@ -77,15 +65,14 @@ namespace DokanSSHFS
             // 
             this.notifyIcon1.ContextMenuStrip = this.notifyMenu;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "SSHFS";
+            this.notifyIcon1.Text = "B2BRouter";
             this.notifyIcon1.Visible = true;
             // 
             // notifyMenu
             // 
             this.notifyMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exit,
-            this.unmount,
-            this.mount});
+            this.config});
             this.notifyMenu.Name = "Exit";
             this.notifyMenu.ShowImageMargin = false;
             this.notifyMenu.Size = new System.Drawing.Size(91, 70);
@@ -97,20 +84,12 @@ namespace DokanSSHFS
             this.exit.Text = "Exit";
             this.exit.Click += new System.EventHandler(this.exit_Click);
             // 
-            // unmount
+            // config
             // 
-            this.unmount.Name = "unmount";
-            this.unmount.Size = new System.Drawing.Size(90, 22);
-            this.unmount.Text = "Unmount";
-            this.unmount.Visible = false;
-            this.unmount.Click += new System.EventHandler(this.unmount_Click);
-            // 
-            // mount
-            // 
-            this.mount.Name = "mount";
-            this.mount.Size = new System.Drawing.Size(90, 22);
-            this.mount.Text = "Mount";
-            this.mount.Click += new System.EventHandler(this.mount_Click);
+            this.config.Name = "config";
+            this.config.Size = new System.Drawing.Size(90, 22);
+            this.config.Text = "Config";
+            this.config.Click += new System.EventHandler(this.config_Click);
             // 
             // label3 user
             // 
@@ -183,7 +162,7 @@ namespace DokanSSHFS
             this.MinimizeBox = false;
             this.Name = "SettingForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "SSHFS Setting";
+            this.Text = "B2BRouter Setting";
             this.Load += new System.EventHandler(this.SettingForm_Load);
             this.notifyMenu.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -228,8 +207,7 @@ namespace DokanSSHFS
         private System.Windows.Forms.ContextMenuStrip notifyMenu;
         private System.Windows.Forms.ToolStripMenuItem exit;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ToolStripMenuItem unmount;
-        private System.Windows.Forms.ToolStripMenuItem mount;
+        private System.Windows.Forms.ToolStripMenuItem config;
         private System.Windows.Forms.ComboBox drive;
 		private System.Windows.Forms.TextBox publicKey;
 		private String text1;

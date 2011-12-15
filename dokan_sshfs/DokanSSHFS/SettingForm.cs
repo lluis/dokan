@@ -86,6 +86,7 @@ namespace DokanSSHFS
             opt.MountPoint = "n:\\";
             opt.ThreadCount = 0;
             opt.UseKeepAlive = true;
+			opt.VolumeLabel = "B2BRouter";
 
             string message = "";
 
