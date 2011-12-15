@@ -15,7 +15,7 @@ namespace DokanSSHFS
         [STAThread]
         static void Main()
         {
-            //ConsoleWin.Open();
+//            ConsoleWin.Open();
 
 			string[] args = System.Environment.GetCommandLineArgs();
             foreach (string arg in args)

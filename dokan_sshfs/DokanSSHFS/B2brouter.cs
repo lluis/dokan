@@ -17,7 +17,7 @@ namespace DokanSSHFS
         private DokanOptions opt;
 		private Settings settings = new Settings();
         private Thread dokan;
-        private bool isUnmounted_ = false;
+        private bool isUnmounted_ = true;
 
         public B2brouter()
         {
@@ -34,9 +34,12 @@ namespace DokanSSHFS
 
         private void cancel_Click(object sender, EventArgs e)
         {
-            //notifyIcon1.Visible = false;
-            //Application.Exit();
-			this.Hide();
+			if (isUnmounted_) {
+            	//notifyIcon1.Visible = false;
+            	Application.Exit();
+			} else {
+				this.Hide();
+			}
         }
 
         private void connect_Click(object sender, EventArgs e)
@@ -58,6 +61,7 @@ namespace DokanSSHFS
             opt.MountPoint = "n:\\";
             opt.ThreadCount = 0;
             opt.UseKeepAlive = true;
+			opt.VolumeLabel = "B2BRouter";
 
             string message = "";
 
