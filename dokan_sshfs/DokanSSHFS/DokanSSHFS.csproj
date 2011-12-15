@@ -7,7 +7,7 @@
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{BE8954E9-27DD-46FD-8E0B-A8F43A4211AD}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DokanSSHFS</RootNamespace>
     <AssemblyName>DokanSSHFS</AssemblyName>
@@ -81,6 +81,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SharpSSH-1.1.1.13\bin\Debug\Tamir.SharpSSH.dll</HintPath>
     </Reference>
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="Mono.Posix" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cache.cs" />
@@ -98,6 +105,10 @@
     </Compile>
     <Compile Include="UserInfo.cs" />
     <Compile Include="Systray.cs" />
+    <Compile Include="B2brouter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="B2brouter.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SettingForm.resx">
@@ -164,5 +175,8 @@
       <Project>{D27CF69D-4681-492A-BE4D-D3D209104423}</Project>
       <Name>SharpSSH</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="B2brouter.resx" />
   </ItemGroup>
 </Project>
