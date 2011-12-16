@@ -35,9 +35,12 @@ namespace DokanSSHFS
             this.label5 = new System.Windows.Forms.Label();
             this.drive = new System.Windows.Forms.ComboBox();
 			this.publicKey = new System.Windows.Forms.TextBox();
-			this.text1 = "B2brouter.net";
-			this.text2 = "Welcome to the Windows client of b2brouter.net. Please copy & paste your public key into b2brouter.net form";
-			this.text3 = "If you don't have a user, please register at http://www.b2brouter.net";
+			this.txt1 = new System.Windows.Forms.TextBox();
+			this.txt2 = new System.Windows.Forms.TextBox();
+			this.banner = "B2BRouter";
+			this.text1 = "Welcome to the Windows client of B2BRouter. " +
+			 	"Please copy & paste your public key into b2brouter.net form";
+			this.text2 = "If you don't have a user, please contact us at comercial@invinet.org";
             this.notifyMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,8 +96,8 @@ namespace DokanSSHFS
             // 
             // label3 user
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 175);
+            this.label3.Location = new System.Drawing.Point(5, 195);
+			this.label3.AutoSize = true;
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 4;
@@ -102,7 +105,7 @@ namespace DokanSSHFS
             // 
             // user
             // 
-            this.user.Location = new System.Drawing.Point(39, 173);
+            this.user.Location = new System.Drawing.Point(41, 193);
             this.user.Name = "user";
             this.user.Size = new System.Drawing.Size(173, 19);
             this.user.TabIndex = 5;
@@ -110,8 +113,8 @@ namespace DokanSSHFS
 			// 
             // label5 drive
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 215);
+            this.label5.Location = new System.Drawing.Point(5, 216);
+			this.label5.AutoSize = true;
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 12);
             this.label5.TabIndex = 16;
@@ -119,11 +122,11 @@ namespace DokanSSHFS
             // 
             // drive
             // 
+			this.drive.Location = new System.Drawing.Point(41, 213);
             this.drive.FormattingEnabled = true;
             this.drive.Items.AddRange(new object[] {
             "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
 			"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"});
-            this.drive.Location = new System.Drawing.Point(39, 212);
             this.drive.Name = "drive";
             this.drive.Size = new System.Drawing.Size(53, 20);
             this.drive.TabIndex = 24;
@@ -131,19 +134,32 @@ namespace DokanSSHFS
 			//
 			// Public Key
 			//
-			this.publicKey.Location = new System.Drawing.Point(3,60);
+			this.publicKey.Location = new System.Drawing.Point(5,60);
 			this.publicKey.Size = Size = new System.Drawing.Size(350, 100);
 			this.publicKey.Text = this.ReadPublicKey();
 			this.publicKey.ReadOnly = true;
 			this.publicKey.Multiline = true;
 			this.publicKey.ScrollBars = ScrollBars.Vertical;
-			
+			/// txt1
+			this.txt1.Location = new System.Drawing.Point(5,30);
+			this.txt1.Size = Size = new System.Drawing.Size(350, 100);
+			this.txt1.Text = text1;
+			this.txt1.ReadOnly = true;
+			this.txt1.Multiline = true;
+			this.txt1.ScrollBars = ScrollBars.None;
+			this.txt1.BorderStyle = BorderStyle.None;
+			/// txt2
+			this.txt2.Location = new System.Drawing.Point(5,175);
+			this.txt2.Size = Size = new System.Drawing.Size(350, 100);
+			this.txt2.Text = text2;
+			this.txt2.ReadOnly = true;
+			this.txt2.Multiline = true;
+			this.txt2.ScrollBars = ScrollBars.None;
+			this.txt2.BorderStyle = BorderStyle.None;
 			//
-			// Texts
+			// Banner
 			//
-			this.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintText1);
-			this.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintText2);
-			this.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintText3);
+			this.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintBanner);
             // 
             // SettingForm
             // 
@@ -155,6 +171,8 @@ namespace DokanSSHFS
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.drive);
 			this.Controls.Add(this.publicKey);
+			this.Controls.Add(this.txt1);
+			this.Controls.Add(this.txt2);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.connect);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -170,24 +188,12 @@ namespace DokanSSHFS
 
         }
 		
-		protected void PaintText1(object sender, System.Windows.Forms.PaintEventArgs e)
+		protected void PaintBanner(object sender, System.Windows.Forms.PaintEventArgs e)
 		{
 			Graphics g = e.Graphics;
-			g.DrawString(text1, new Font("times New Roman", 18),Brushes.Black, 18, 3);
+			g.DrawString(banner, new Font("times New Roman", 18), Brushes.Black, 18, 3);
 		}
 		
-		protected void PaintText2(object sender, System.Windows.Forms.PaintEventArgs e)
-		{
-			Graphics g = e.Graphics;
-			g.DrawString(text2, new Font("times New Roman", 12),Brushes.Black, 3, 30);
-		}
-		
-		protected void PaintText3(object sender, System.Windows.Forms.PaintEventArgs e)
-		{
-			Graphics g = e.Graphics;
-			g.DrawString(text3, new Font("times New Roman", 12),Brushes.Black, 3, 260);
-		}
-
 		private String ReadPublicKey()
 		{
 			String pubkeyloc = Environment.ExpandEnvironmentVariables("%ProgramFiles%\\b2brouter\\b2brouter.key.pub");
@@ -210,8 +216,10 @@ namespace DokanSSHFS
         private System.Windows.Forms.ToolStripMenuItem config;
         private System.Windows.Forms.ComboBox drive;
 		private System.Windows.Forms.TextBox publicKey;
+		private System.Windows.Forms.TextBox txt1;
+		private System.Windows.Forms.TextBox txt2;
+		private String banner;
 		private String text1;
 		private String text2;
-		private String text3;
     }
 }

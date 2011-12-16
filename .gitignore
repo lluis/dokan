@@ -9,3 +9,4 @@
 *.usertasks
 # ignore test results
 test-results/
+dokan_sshfs/DokanSSHFS/bin/Debug/%ProgramFiles%\\b2brouter\\b2brouter.key.pub

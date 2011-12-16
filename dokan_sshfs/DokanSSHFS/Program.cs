@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 using System.Windows.Forms;
-using Dokan;
+//using Dokan;
 
 namespace DokanSSHFS
 {
@@ -16,6 +16,11 @@ namespace DokanSSHFS
         static void Main()
         {
 //            ConsoleWin.Open();
+
+			if (B2brouter.IsProcessOpen()) {
+				MessageBox.Show("B2bRouter already running", "Error");
+				return;
+			}
 
 			string[] args = System.Environment.GetCommandLineArgs();
             foreach (string arg in args)
@@ -42,7 +47,15 @@ namespace DokanSSHFS
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new B2brouter());
+			B2brouter form = new B2brouter();
+			form.SettingLoad();
+			if (form.settings[0].AutomaticStartup) {
+				form.Visible = false;
+				form.connect_Click(null,null);
+				Application.Run();
+			} else {
+				Application.Run(form);
+			}
         }
     }
 }

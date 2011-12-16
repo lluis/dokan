@@ -18,6 +18,7 @@ namespace DokanSSHFS
         public string Drive = "N";
         public bool DisableCache = false;
         public bool WithoutOfflineAttribute = false;
+		public bool AutomaticStartup = false;
     }
 
     public class Settings

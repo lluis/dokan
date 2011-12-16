@@ -15,7 +15,7 @@ namespace DokanSSHFS
     {
         private SSHFS sshfs;
         private DokanOptions opt;
-		private Settings settings = new Settings();
+		public Settings settings = new Settings();
         private Thread dokan;
         private bool isUnmounted_ = true;
 
@@ -29,20 +29,14 @@ namespace DokanSSHFS
             FormBorderStyle = FormBorderStyle.FixedSingle;
             //notifyIcon1.Icon = SystemIcons.Application;
             notifyIcon1.Visible = true;
-			SettingLoad();
         }
 
         private void cancel_Click(object sender, EventArgs e)
         {
-			if (isUnmounted_) {
-            	//notifyIcon1.Visible = false;
-            	Application.Exit();
-			} else {
-				this.Hide();
-			}
+			this.Hide();
         }
 
-        private void connect_Click(object sender, EventArgs e)
+        public void connect_Click(object sender, EventArgs e)
         {
 			this.Hide();
 			settingSave();
@@ -100,7 +94,7 @@ namespace DokanSSHFS
                 null,
                 Environment.ExpandEnvironmentVariables("%ProgramFiles%\\b2brouter\\b2brouter.key"),
                 "",
-                "/",
+                "/incoming/",
                 DokanSSHFS.SSHDebug);
 
             if (sshfs.SSHConnect())
@@ -109,6 +103,12 @@ namespace DokanSSHFS
 
                 MountWorker worker = null;
                 worker = new MountWorker(new CacheOperations(sshfs), opt);
+
+				if (!settings[0].AutomaticStartup)
+				{
+					settings[0].AutomaticStartup = true;
+					settings.Save();
+				}
 
                 dokan = new Thread(worker.Start);
                 dokan.Start();
@@ -228,18 +228,15 @@ namespace DokanSSHFS
             Setting s = settings[0];
 
             s.Name = "b2brouter";
-
             s.User = user.Text;
             s.Port = 22;
-
             s.Drive = drive.Text;
 
             settings.Save();
-
             SettingLoad();
         }
 		
-		private void SettingLoad()
+		public void SettingLoad()
         {
 			settings.Load();
             Setting s = settings[0];
@@ -248,5 +245,20 @@ namespace DokanSSHFS
             drive.Text = s.Drive;
         }
 
+		public static bool IsProcessOpen()
+		{
+			Int32 i = 0;
+		    foreach (Process clsProcess in Process.GetProcesses()) {
+		        if (clsProcess.ProcessName.Contains("DokanSSHFS"))
+		        {
+					i += 1;
+					// check if there are >1 processes with name DokanSSHFS
+		            if (i > 1) {
+						return true;
+					}
+		        }
+		    }
+		    return false;
+		}
     }
 }
