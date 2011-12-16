@@ -116,6 +116,7 @@
       <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Systray.resx" />
+    <EmbeddedResource Include="B2brouter.resx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon2.ico" />
@@ -175,8 +176,5 @@
       <Project>{D27CF69D-4681-492A-BE4D-D3D209104423}</Project>
       <Name>SharpSSH</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="B2brouter.resx" />
   </ItemGroup>
 </Project>

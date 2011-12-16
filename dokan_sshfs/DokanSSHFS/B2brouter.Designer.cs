@@ -23,7 +23,7 @@ namespace DokanSSHFS
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(B2brouter));
             this.label3 = new System.Windows.Forms.Label();
             this.user = new System.Windows.Forms.TextBox();
             this.connect = new System.Windows.Forms.Button();
@@ -74,8 +74,8 @@ namespace DokanSSHFS
             // notifyMenu
             // 
             this.notifyMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exit,
-            this.config});
+            this.config,
+            this.exit});
             this.notifyMenu.Name = "Exit";
             this.notifyMenu.ShowImageMargin = false;
             this.notifyMenu.Size = new System.Drawing.Size(91, 70);

@@ -27,7 +27,6 @@ namespace DokanSSHFS
         private void SettingForm_Load(object sender, EventArgs e)
         {
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            //notifyIcon1.Icon = SystemIcons.Application;
             notifyIcon1.Visible = true;
         }
 
