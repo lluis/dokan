@@ -39,7 +39,7 @@ namespace DokanSSHFS
 			this.txt2 = new System.Windows.Forms.TextBox();
 			this.banner = "B2BRouter";
 			this.text1 = "Welcome to the Windows client of B2BRouter. " +
-			 	"Please copy & paste your public key into b2brouter.net form";
+			 	"This is your public key, we need to authorize it in our servers.";
 			this.text2 = "If you don't have a user, please contact us at comercial@invinet.org";
             this.notifyMenu.SuspendLayout();
             this.SuspendLayout();
@@ -96,7 +96,7 @@ namespace DokanSSHFS
             // 
             // label3 user
             // 
-            this.label3.Location = new System.Drawing.Point(5, 215);
+            this.label3.Location = new System.Drawing.Point(5, 235);
 			this.label3.AutoSize = true;
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
@@ -105,7 +105,7 @@ namespace DokanSSHFS
             // 
             // user
             // 
-            this.user.Location = new System.Drawing.Point(41, 213);
+            this.user.Location = new System.Drawing.Point(41, 233);
             this.user.Name = "user";
             this.user.Size = new System.Drawing.Size(173, 19);
             this.user.TabIndex = 5;
@@ -113,7 +113,7 @@ namespace DokanSSHFS
 			// 
             // label5 drive
             // 
-            this.label5.Location = new System.Drawing.Point(5, 236);
+            this.label5.Location = new System.Drawing.Point(5, 256);
 			this.label5.AutoSize = true;
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 12);
@@ -122,7 +122,7 @@ namespace DokanSSHFS
             // 
             // drive
             // 
-			this.drive.Location = new System.Drawing.Point(41, 233);
+			this.drive.Location = new System.Drawing.Point(41, 253);
             this.drive.FormattingEnabled = true;
             this.drive.Items.AddRange(new object[] {
             "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
@@ -142,15 +142,15 @@ namespace DokanSSHFS
 			this.publicKey.ScrollBars = ScrollBars.None;
 			/// txt1
 			this.txt1.Location = new System.Drawing.Point(5,30);
-			this.txt1.Size = Size = new System.Drawing.Size(350, 100);
+			this.txt1.Size = Size = new System.Drawing.Size(350, 30);
 			this.txt1.Text = text1;
 			this.txt1.ReadOnly = true;
 			this.txt1.Multiline = true;
 			this.txt1.ScrollBars = ScrollBars.None;
 			this.txt1.BorderStyle = BorderStyle.None;
 			/// txt2
-			this.txt2.Location = new System.Drawing.Point(5,175);
-			this.txt2.Size = Size = new System.Drawing.Size(350, 100);
+			this.txt2.Location = new System.Drawing.Point(5,215);
+			this.txt2.Size = Size = new System.Drawing.Size(350, 20);
 			this.txt2.Text = text2;
 			this.txt2.ReadOnly = true;
 			this.txt2.Multiline = true;
