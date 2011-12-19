@@ -96,7 +96,7 @@ namespace DokanSSHFS
             // 
             // label3 user
             // 
-            this.label3.Location = new System.Drawing.Point(5, 195);
+            this.label3.Location = new System.Drawing.Point(5, 215);
 			this.label3.AutoSize = true;
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
@@ -105,7 +105,7 @@ namespace DokanSSHFS
             // 
             // user
             // 
-            this.user.Location = new System.Drawing.Point(41, 193);
+            this.user.Location = new System.Drawing.Point(41, 213);
             this.user.Name = "user";
             this.user.Size = new System.Drawing.Size(173, 19);
             this.user.TabIndex = 5;
@@ -113,7 +113,7 @@ namespace DokanSSHFS
 			// 
             // label5 drive
             // 
-            this.label5.Location = new System.Drawing.Point(5, 216);
+            this.label5.Location = new System.Drawing.Point(5, 236);
 			this.label5.AutoSize = true;
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 12);
@@ -122,7 +122,7 @@ namespace DokanSSHFS
             // 
             // drive
             // 
-			this.drive.Location = new System.Drawing.Point(41, 213);
+			this.drive.Location = new System.Drawing.Point(41, 233);
             this.drive.FormattingEnabled = true;
             this.drive.Items.AddRange(new object[] {
             "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
@@ -135,11 +135,11 @@ namespace DokanSSHFS
 			// Public Key
 			//
 			this.publicKey.Location = new System.Drawing.Point(5,60);
-			this.publicKey.Size = Size = new System.Drawing.Size(350, 100);
+			this.publicKey.Size = Size = new System.Drawing.Size(350, 145);
 			this.publicKey.Text = this.ReadPublicKey();
 			this.publicKey.ReadOnly = true;
 			this.publicKey.Multiline = true;
-			this.publicKey.ScrollBars = ScrollBars.Vertical;
+			this.publicKey.ScrollBars = ScrollBars.None;
 			/// txt1
 			this.txt1.Location = new System.Drawing.Point(5,30);
 			this.txt1.Size = Size = new System.Drawing.Size(350, 100);
@@ -196,7 +196,7 @@ namespace DokanSSHFS
 		
 		private String ReadPublicKey()
 		{
-			String pubkeyloc = Environment.ExpandEnvironmentVariables("%ProgramFiles%\\b2brouter\\b2brouter.key.pub");
+			String pubkeyloc = B2brouter.ProgramFilesx86() + "\\b2brouter\\b2brouter.key.pub";
 			TextReader tr = new StreamReader(pubkeyloc);
 			String pubkey = tr.ReadLine();
 			tr.Close();

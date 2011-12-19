@@ -91,7 +91,7 @@ namespace DokanSSHFS
                 "compartit.b2brouter.net",
                 22,
                 null,
-                Environment.ExpandEnvironmentVariables("%ProgramFiles%\\b2brouter\\b2brouter.key"),
+                B2brouter.ProgramFilesx86() + "\\b2brouter\\b2brouter.key",
                 "",
                 "/incoming/",
                 DokanSSHFS.SSHDebug);
@@ -258,6 +258,15 @@ namespace DokanSSHFS
 		        }
 		    }
 		    return false;
+		}
+		public static String ProgramFilesx86()
+		{
+			if( 8 == IntPtr.Size 
+                || (!String.IsNullOrEmpty(Environment.GetEnvironmentVariable("PROCESSOR_ARCHITEW6432"))))
+            {
+                return Environment.GetEnvironmentVariable("ProgramFiles(x86)");
+            }
+            return Environment.GetEnvironmentVariable("ProgramFiles");
 		}
     }
 }
