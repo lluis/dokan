@@ -70,6 +70,7 @@ namespace DokanSSHFS
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "B2BRouter";
             this.notifyIcon1.Visible = true;
+			this.notifyIcon1.DoubleClick += new System.EventHandler(this.config_Click);
             // 
             // notifyMenu
             // 
@@ -182,10 +183,10 @@ namespace DokanSSHFS
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "B2BRouter Setting";
             this.Load += new System.EventHandler(this.SettingForm_Load);
-            this.notifyMenu.ResumeLayout(false);
+			this.FormClosing += new FormClosingEventHandler(this.exitcross_Click);
+			this.notifyMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 		
 		protected void PaintBanner(object sender, System.Windows.Forms.PaintEventArgs e)

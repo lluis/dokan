@@ -123,7 +123,6 @@ namespace DokanSSHFS
             
         }
 
-
         private void Unmount()
         {
             if (opt != null && sshfs != null)
@@ -145,7 +144,6 @@ namespace DokanSSHFS
                 sshfs.Unmount(null);
             }
         }
-
 
         class MountWorker
         {
@@ -190,7 +188,6 @@ namespace DokanSSHFS
             }
         }
 
-        
         private void exit_Click(object sender, EventArgs e)
         {
             notifyIcon1.Visible = false;
@@ -215,7 +212,6 @@ namespace DokanSSHFS
             Application.Exit();
         }
 
-        
 		private void config_Click(object sender, EventArgs e)
 		{
 			Debug.WriteLine("config_Click");
@@ -243,6 +239,17 @@ namespace DokanSSHFS
             user.Text = s.User;
             drive.Text = s.Drive;
         }
+		
+		private void exitcross_Click(object sender, FormClosingEventArgs e)
+	    {
+	        if (e.CloseReason == CloseReason.UserClosing)
+	        {
+	            // The user has requested the form be closed so mimimise to the system tray instead.
+	            e.Cancel = true;
+	            this.Visible = false;
+	            this.notifyIcon1.Visible = true;
+	        }
+	    } 
 
 		public static bool IsProcessOpen()
 		{
@@ -259,6 +266,7 @@ namespace DokanSSHFS
 		    }
 		    return false;
 		}
+
 		public static String ProgramFilesx86()
 		{
 			if( 8 == IntPtr.Size 
