@@ -80,6 +80,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Tamir.SharpSSH, Version=1.1.1.13, Culture=neutral, PublicKeyToken=null">
@@ -95,6 +96,12 @@
     <Reference Include="Mono.Posix" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="B2brouterServiceManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="B2brouterServiceManager.Designer.cs">
+      <DependentUpon>B2brouterServiceManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cache.cs" />
     <Compile Include="Console.cs" />
     <Compile Include="DokanOperations.cs" />
@@ -118,6 +125,9 @@
     <Compile Include="B2brouter.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="B2brouterServiceManager.resx">
+      <DependentUpon>B2brouterServiceManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SettingForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>SettingForm.cs</DependentUpon>

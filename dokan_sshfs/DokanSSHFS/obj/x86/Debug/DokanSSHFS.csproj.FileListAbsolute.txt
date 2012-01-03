@@ -7,6 +7,7 @@ C:\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Debug\DiffieHellman.dll
 C:\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Debug\DokanNet.pdb
 C:\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Debug\Tamir.SharpSSH.pdb
 C:\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\DokanSSHFS.B2brouterServiceManager.resources
 C:\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\DokanSSHFS.SettingForm.resources
 C:\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\DokanSSHFS.Systray.resources
 C:\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\DokanSSHFS.B2brouter.resources
