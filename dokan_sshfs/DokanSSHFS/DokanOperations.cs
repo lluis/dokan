@@ -5,7 +5,6 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using System.Text;
-
 using Dokan;
 using Tamir.SharpSsh.jsch;
 
@@ -78,7 +77,7 @@ namespace DokanSSHFS
         }
     }
 
-    class SSHFS : DokanOperations
+    public class SSHFS : DokanOperations
     {
         private JSch jsch_;
         private Session session_;
@@ -137,7 +136,7 @@ namespace DokanSSHFS
             }
         }
 
-        internal bool SSHConnect()
+        public bool SSHConnect()
         {
             try
             {

@@ -1,0 +1,17 @@
+C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\B2brouterService.exe
+C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\B2brouterService.pdb
+C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\DokanNet.dll
+C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\DokanSSHFS.exe
+C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\Tamir.SharpSSH.dll
+C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\Org.Mentalis.Security.dll
+C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\DiffieHellman.dll
+C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\DokanNet.pdb
+C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\DokanSSHFS.pdb
+C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\Tamir.SharpSSH.pdb
+C:\projects\dokan\dokan_sshfs\B2brouterService\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\projects\dokan\dokan_sshfs\B2brouterService\obj\x86\Debug\DokanSSHFS.B2brouterService.resources
+C:\projects\dokan\dokan_sshfs\B2brouterService\obj\x86\Debug\DokanSSHFS.ProjectInstaller.resources
+C:\projects\dokan\dokan_sshfs\B2brouterService\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\projects\dokan\dokan_sshfs\B2brouterService\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\projects\dokan\dokan_sshfs\B2brouterService\obj\x86\Debug\B2brouterService.exe
+C:\projects\dokan\dokan_sshfs\B2brouterService\obj\x86\Debug\B2brouterService.pdb

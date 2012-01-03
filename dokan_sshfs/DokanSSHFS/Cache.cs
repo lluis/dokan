@@ -88,7 +88,7 @@ namespace DokanSSHFS
 
 
 
-    class CacheOperations : DokanOperations
+    public class CacheOperations : DokanOperations
     {
         DokanOperations ope_;
         CacheEntry cache_;
