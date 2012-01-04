@@ -24,7 +24,7 @@ namespace DokanSSHFS
             this.textBox2.Text = this.ReadPublicKey();
             b2bservice = new ServiceController();
             b2bservice.ServiceName = "B2brouterService";
-            Redraw(null);
+            Redraw();
         }
 
         public void start_Click(object sender, EventArgs e)
@@ -44,8 +44,6 @@ namespace DokanSSHFS
                 }
                 if (i >= 10) {
                     message = "Failed to connect.";
-                } else {
-                    message = "Intents: " + i;
                 }
             } else {
                 // ???
@@ -72,7 +70,7 @@ namespace DokanSSHFS
             {
                 // ???
             }
-            Redraw(null);
+            Redraw();
         }
 
         private void settingSave()
@@ -102,7 +100,7 @@ namespace DokanSSHFS
             drive.Text = s.Drive;
         }
 
-        private void Redraw(String message)
+        private void Redraw(String message = null)
         {
             String default_message = null;
             try {
