@@ -44,6 +44,7 @@ namespace DokanSSHFS
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,7 +79,7 @@ namespace DokanSSHFS
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 307);
+            this.label2.Location = new System.Drawing.Point(6, 309);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(328, 13);
             this.label2.TabIndex = 3;
@@ -97,7 +98,7 @@ namespace DokanSSHFS
             // 
             this.user.Location = new System.Drawing.Point(65, 335);
             this.user.Name = "user";
-            this.user.Size = new System.Drawing.Size(269, 20);
+            this.user.Size = new System.Drawing.Size(237, 20);
             this.user.TabIndex = 1;
             // 
             // label4
@@ -140,7 +141,7 @@ namespace DokanSSHFS
             "Z"});
             this.drive.Location = new System.Drawing.Point(65, 366);
             this.drive.Name = "drive";
-            this.drive.Size = new System.Drawing.Size(121, 21);
+            this.drive.Size = new System.Drawing.Size(75, 21);
             this.drive.TabIndex = 2;
             // 
             // start
@@ -177,8 +178,9 @@ namespace DokanSSHFS
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label5.Location = new System.Drawing.Point(62, 399);
+            this.label5.Location = new System.Drawing.Point(62, 400);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(137, 13);
             this.label5.TabIndex = 11;
@@ -204,6 +206,16 @@ namespace DokanSSHFS
             this.label1.TabIndex = 13;
             this.label1.Text = "v. 2.1";
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(65, 416);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(237, 10);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 13;
+            this.progressBar1.UseWaitCursor = true;
+            this.progressBar1.Visible = false;
+            // 
             // B2BRouter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,9 +235,11 @@ namespace DokanSSHFS
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.progressBar1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "B2BRouter";
             this.Text = "B2BRouter for Windows";
             this.panel1.ResumeLayout(false);
@@ -250,5 +264,6 @@ namespace DokanSSHFS
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

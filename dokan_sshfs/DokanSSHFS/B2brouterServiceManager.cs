@@ -29,14 +29,17 @@ namespace DokanSSHFS
 
         public void start_Click(object sender, EventArgs e)
         {
+            this.progressBar1.Visible = true;
             settingSave();
             srvstatus = b2bservice.Status.ToString();
             String message = null;
             if (srvstatus == "Stopped") {
                 b2bservice.Start();
                 int i = 0;
+                this.progressBar1.Value = i * 10;
                 while (srvstatus != "Running" && i < 10)
                 {
+                    this.progressBar1.Value = i * 10;
                     b2bservice.Refresh();
                     srvstatus = b2bservice.Status.ToString();
                     System.Threading.Thread.Sleep(1000);
@@ -49,10 +52,12 @@ namespace DokanSSHFS
                 // ???
             }
             Redraw(message);
+            this.progressBar1.Visible = false;
         }
 
         public void stop_Click(object sender, EventArgs e)
         {
+            this.progressBar1.Visible = true;
             srvstatus = b2bservice.Status.ToString();
             if (srvstatus == "Running")
             {
@@ -60,6 +65,7 @@ namespace DokanSSHFS
                 int i = 0;
                 while (srvstatus != "Stopped" && i < 10)
                 {
+                    this.progressBar1.Value = i * 10;
                     b2bservice.Refresh();
                     srvstatus = b2bservice.Status.ToString();
                     System.Threading.Thread.Sleep(1000);
@@ -71,6 +77,7 @@ namespace DokanSSHFS
                 // ???
             }
             Redraw();
+            this.progressBar1.Visible = false;
         }
 
         private void settingSave()
@@ -112,6 +119,7 @@ namespace DokanSSHFS
                 this.stop.Enabled = true;
                 this.user.Enabled = false;
                 this.drive.Enabled = false;
+                this.label5.ForeColor = System.Drawing.Color.ForestGreen;
                 default_message = "Service is currently running";
             }
             else if (srvstatus == "Stopped")
@@ -120,6 +128,7 @@ namespace DokanSSHFS
                 this.stop.Enabled = false;
                 this.user.Enabled = true;
                 this.drive.Enabled = true;
+                this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
                 default_message = "Service is currently stopped";
             }
             else
@@ -128,9 +137,11 @@ namespace DokanSSHFS
                 this.stop.Enabled = false;
                 this.user.Enabled = false;
                 this.drive.Enabled = false;
+                this.label5.ForeColor = System.Drawing.Color.Firebrick;
                 default_message = "Service is not correctly installed";
             }
             if ( message != null ) {
+                this.label5.ForeColor = System.Drawing.Color.Firebrick;
                 this.label5.Text = message;
             } else {
                 this.label5.Text = default_message;
@@ -155,6 +166,5 @@ namespace DokanSSHFS
             }
             return Environment.GetEnvironmentVariable("ProgramFiles");
         }
-
     }
 }

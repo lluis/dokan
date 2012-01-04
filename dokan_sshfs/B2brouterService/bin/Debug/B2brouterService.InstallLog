@@ -1,0 +1,21 @@
+﻿Desinstalando ensamblado 'C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\B2brouterService.exe'.
+Los parámetros afectados son:
+   logtoconsole = 
+   assemblypath = C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\B2brouterService.exe
+   logfile = C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\B2brouterService.InstallLog
+Quitando el origen de EventLog B2brouterService.
+Se está quitando el servicio B2brouterService del sistema...
+El servicio B2brouterService se ha quitado correctamente del sistema.
+Instalando ensamblado 'C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\B2brouterService.exe'.
+Los parámetros afectados son:
+   logtoconsole = 
+   assemblypath = C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\B2brouterService.exe
+   logfile = C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\B2brouterService.InstallLog
+Instalando el servicio B2brouterService...
+El servicio B2brouterService se ha instalado correctamente.
+Creando el origen de EventLog B2brouterService en el registro Application...
+Confirmando ensamblado 'C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\B2brouterService.exe'.
+Los parámetros afectados son:
+   logtoconsole = 
+   assemblypath = C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\B2brouterService.exe
+   logfile = C:\projects\dokan\dokan_sshfs\B2brouterService\bin\Debug\B2brouterService.InstallLog
