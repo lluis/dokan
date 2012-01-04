@@ -14,4 +14,9 @@ Files
   dokan_sshfs/DokanSSHFSInstaller/Output/ -- installer
 
 
+I disabled some controls, since config file don't stores password nor passphrase, service can't get it from config file, so it only allows authentication with empty passphrase keys.
+
+Also disabled the multiple configurations, when you click start, current configuration is saved automatically.
+
+
 * I never made windows software before, nor any c#, so use it under your responsability :)
