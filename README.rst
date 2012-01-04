@@ -9,8 +9,8 @@ Files
 -----
 
 ::
+
   dokan_sshfs/DokanSSHFS/bin/x86/Release/ -- compiled DokanSSHFS.exe and libs
-  
   dokan_sshfs/DokanSSHFSInstaller/Output/ -- installer
 
 
