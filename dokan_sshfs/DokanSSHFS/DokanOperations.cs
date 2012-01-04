@@ -8,6 +8,7 @@ using System.Text;
 
 using Dokan;
 using Tamir.SharpSsh.jsch;
+using System.Diagnostics;
 
 namespace DokanSSHFS
 {
@@ -101,8 +102,11 @@ namespace DokanSSHFS
         private bool connectionError_ = false;
         private object reconnectLock_ = new object();
 
-        public SSHFS()
+        private EventLog eventLog1_ = null;
+
+        public SSHFS(EventLog eventLog1)
         {
+            eventLog1_ = eventLog1;
         }
 
         public void Initialize(string user, string host, int port, string password, string identity, string passphrase, string root, bool debug)
@@ -161,6 +165,7 @@ namespace DokanSSHFS
             }
             catch (Exception e)
             {
+                eventLog1_.WriteEntry("ERROR: " + e.ToString());
                 Debug(e.ToString());
                 return false;
             }

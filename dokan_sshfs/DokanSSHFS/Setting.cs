@@ -72,7 +72,7 @@ namespace DokanSSHFS
         public void Save()
         {
             XmlSerializer serializer = new XmlSerializer(settings_.GetType());
-            using (FileStream stream = new FileStream(Application.UserAppDataPath + "\\setting.xml", FileMode.Create))
+            using (FileStream stream = new FileStream(Application.CommonAppDataPath+ "\\setting.xml", FileMode.Create))
             {
                 serializer.Serialize(stream, settings_);
             }
@@ -83,7 +83,7 @@ namespace DokanSSHFS
             try
             {
                 XmlSerializer serializer = new XmlSerializer(settings_.GetType());
-                using (FileStream stream = new FileStream(Application.UserAppDataPath + "\\setting.xml", FileMode.OpenOrCreate))
+                using (FileStream stream = new FileStream(Application.CommonAppDataPath + "\\setting.xml", FileMode.OpenOrCreate))
                 {
                     settings_ = (List<Setting>)serializer.Deserialize(stream);
                 }

@@ -8,28 +8,31 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
 using Dokan;
+using System.ServiceProcess;
 
 namespace DokanSSHFS
 {
     public partial class SettingForm : Form
     {
-        private SSHFS sshfs;
         private DokanOptions opt;
         private Settings settings = new Settings();
         private int selectedIndex = 0;
-        private Thread dokan;
-        private bool isUnmounted_ = false;
+        //private Thread dokan;
+        ServiceController sshfsservice;
+        String srvstatus = "";
 
         public SettingForm()
         {
             InitializeComponent();
+            sshfsservice = new ServiceController();
+            sshfsservice.ServiceName = "SSHFSService";
+            Redraw();
         }
 
         private void SettingForm_Load(object sender, EventArgs e)
         {
             FormBorderStyle = FormBorderStyle.FixedSingle;
             //notifyIcon1.Icon = SystemIcons.Application;
-            notifyIcon1.Visible = true;
             SettingLoad();
         }
 
@@ -68,17 +71,14 @@ namespace DokanSSHFS
 
         private void cancel_Click(object sender, EventArgs e)
         {
-            notifyIcon1.Visible = false;
             Application.Exit();
         }
 
-        private void connect_Click(object sender, EventArgs e)
+        private void start_Click(object sender, EventArgs e)
         {
-            this.Hide();
-
+            this.progressBar1.Visible = true;
             int p = 22;
             
-            sshfs = new SSHFS();
             opt = new DokanOptions();
 
             opt.DebugMode = DokanSSHFS.DokanDebug;
@@ -110,7 +110,6 @@ namespace DokanSSHFS
                 }
             }
 
-
             if (drive.Text.Length != 1)
             {
                 message += "Drive letter is invalid\n";
@@ -123,85 +122,116 @@ namespace DokanSSHFS
                     message += "Drive letter is invalid\n";
 
                 opt.MountPoint = string.Format("{0}:\\", letter);
-                unmount.Text = "Unmount (" + opt.MountPoint + ")";
             }
 
             opt.ThreadCount = DokanSSHFS.DokanThread;
 
             if (message.Length != 0)
             {
-                this.Show();
+                this.progressBar1.Visible = false;
                 MessageBox.Show(message, "Error");
                 return;
             }
 
             DokanSSHFS.UseOffline = !withoutOfflineAttribute.Checked;
 
-            sshfs.Initialize(
-                user.Text,
-                host.Text,
-                p,
-                usePrivateKey.Checked ? null : password.Text,
-                usePrivateKey.Checked ? privatekey.Text : null,
-                usePrivateKey.Checked ? passphrase.Text : null,
-                root.Text,
-                DokanSSHFS.SSHDebug);
+            SettingSave();
 
-            if (sshfs.SSHConnect())
+            srvstatus = sshfsservice.Status.ToString();
+
+            message = null;
+            if (srvstatus == "Stopped")
             {
-                unmount.Visible = true;
-                mount.Visible = false;
-                isUnmounted_ = false;
-
-                MountWorker worker = null;
-                if (disableCache.Checked)
+                sshfsservice.Start();
+                int i = 0;
+                this.progressBar1.Value = i * 10;
+                while (srvstatus != "Running" && i < 10)
                 {
-                    worker = new MountWorker(sshfs, opt);
+                    this.progressBar1.Value = i * 10;
+                    sshfsservice.Refresh();
+                    srvstatus = sshfsservice.Status.ToString();
+                    System.Threading.Thread.Sleep(1000);
+                    i += 1;
                 }
-                else
+                if (i >= 10)
                 {
-                    worker = new MountWorker(new CacheOperations(sshfs), opt);
+                    message = "Failed to connect.";
                 }
-
-                dokan = new Thread(worker.Start);
-                dokan.Start();
             }
             else
             {
-                this.Show();
-                MessageBox.Show("failed to connect", "Error");
-                return;
+                // ???
             }
-
-            MessageBox.Show("sshfs start", "info");
-            
+            Redraw(message);
+            this.progressBar1.Visible = false;
         }
 
-
-        private void Unmount()
+        private void stop_Click(object sender, EventArgs e)
         {
-            if (opt != null && sshfs != null)
+            this.progressBar1.Visible = true;
+            srvstatus = sshfsservice.Status.ToString();
+            if (srvstatus == "Running")
             {
-                Debug.WriteLine(string.Format("SSHFS Trying unmount : {0}", opt.MountPoint));
-
-                if (DokanNet.DokanRemoveMountPoint(opt.MountPoint) < 0)
+                sshfsservice.Stop();
+                int i = 0;
+                while (srvstatus != "Stopped" && i < 10)
                 {
-                    Debug.WriteLine("DokanReveMountPoint failed\n");
-                    // If DokanUmount failed, call sshfs.Unmount to disconnect.
-                    ;// sshfs.Unmount(null);
+                    this.progressBar1.Value = i * 10;
+                    sshfsservice.Refresh();
+                    srvstatus = sshfsservice.Status.ToString();
+                    System.Threading.Thread.Sleep(1000);
+                    i += 1;
                 }
-                else
-                {
-                    Debug.WriteLine("DokanReveMountPoint success\n");
-                }
-                // This should be called from Dokan, but not called.
-                // Call here explicitly.
-                sshfs.Unmount(null);
             }
-            unmount.Visible = false;
-            mount.Visible = true;
+            else
+            {
+                // ???
+            }
+            Redraw();
+            this.progressBar1.Visible = false;
         }
 
+        private void Redraw(String message = null)
+        {
+            String default_message = null;
+            try
+            {
+                srvstatus = sshfsservice.Status.ToString();
+            }
+            catch { }
+            if (srvstatus == "Running")
+            {
+                this.start.Enabled = false;
+                this.stop.Enabled = true;
+                this.label8.ForeColor = System.Drawing.Color.ForestGreen;
+                default_message = "Service is currently running";
+            }
+            else if (srvstatus == "Stopped")
+            {
+                this.start.Enabled = true;
+                this.stop.Enabled = false;
+                this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+                default_message = "Service is currently stopped";
+            }
+            else
+            {
+                this.start.Enabled = false;
+                this.stop.Enabled = false;
+                this.user.Enabled = false;
+                this.drive.Enabled = false;
+                this.label8.ForeColor = System.Drawing.Color.Firebrick;
+                default_message = "Service is not correctly installed";
+            }
+            if (message != null)
+            {
+                this.label8.ForeColor = System.Drawing.Color.Firebrick;
+                this.label8.Text = message;
+            }
+            else
+            {
+                this.label8.Text = default_message;
+            }
+        }
 
         class MountWorker
         {
@@ -248,38 +278,11 @@ namespace DokanSSHFS
             }
         }
 
-        
         private void exit_Click(object sender, EventArgs e)
         {
-            notifyIcon1.Visible = false;
-
-            if (!isUnmounted_)
-            {
-                Debug.WriteLine("unmount is visible");
-                unmount.Visible = false;
-                Unmount();
-                isUnmounted_ = true;
-            }
-
             Debug.WriteLine("SSHFS Thread Waitting");
 
-            if (dokan != null && dokan.IsAlive)
-            {
-                Debug.WriteLine("doka.Join");
-                dokan.Join();
-            }
-            
-            Debug.WriteLine("SSHFS Thread End");
-
             Application.Exit();
-        }
-
-        
-        private void unmount_Click(object sender, EventArgs e)
-        {
-            Debug.WriteLine("unmount_Click");          
-            this.Unmount();
-            isUnmounted_ = true;
         }
 
         private void save_Click(object sender, EventArgs e)
@@ -314,7 +317,37 @@ namespace DokanSSHFS
             SettingLoad(selectedIndex);
         }
 
+        private void SettingSave()
+        {
+            Setting s = settings[selectedIndex];
 
+            s.Name = settingNames.Text;
+            if (settingNames.Text == "New Setting")
+                s.Name = settings.GetNewName();
+
+            s.Host = host.Text;
+            s.User = user.Text;
+            try
+            {
+                s.Port = Int32.Parse(port.Text);
+            }
+            catch (Exception)
+            {
+                s.Port = 22;
+            }
+
+            s.PrivateKey = privatekey.Text;
+            s.UsePassword = usePassword.Checked;
+            s.Drive = drive.Text;
+            s.ServerRoot = root.Text;
+            s.DisableCache = disableCache.Checked;
+            s.WithoutOfflineAttribute = withoutOfflineAttribute.Checked;
+
+            settings.Save();
+
+            SettingLoad();
+            SettingLoad(selectedIndex);
+        }
 
         private void settingNames_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -364,10 +397,5 @@ namespace DokanSSHFS
             SettingLoad();
         }
 
-        private void mount_Click(object sender, EventArgs e)
-        {
-            unmount.Visible = false;
-            this.Show();
-        }
     }
 }

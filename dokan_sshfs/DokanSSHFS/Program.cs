@@ -1,7 +1,9 @@
 using System;
 using System.Threading;
 using System.Windows.Forms;
-using Dokan;
+using System.Configuration.Install;
+using System.Reflection;
+using System.ServiceProcess;
 
 namespace DokanSSHFS
 {
@@ -12,74 +14,31 @@ namespace DokanSSHFS
         public static ushort DokanThread = 0;
         public static bool UseOffline = true;
 
-        [STAThread]
-        static void Main()
+        //[STAThread]
+        static void Main(String[] args)
         {
-            //ConsoleWin.Open();
-
-			string[] args = System.Environment.GetCommandLineArgs();
-            foreach (string arg in args)
+            if (System.Environment.UserInteractive)
             {
-                if (arg == "-sd")
+                string parameter = string.Concat(args);
+                switch (parameter)
                 {
-                    SSHDebug = true;
-                }
-                if (arg == "-dd")
-                {
-                    DokanDebug = true;
-                }
-                if (arg.Length >= 3 &&
-                    arg[0] == '-' &&
-                    arg[1] == 't')
-                {
-                    DokanThread = ushort.Parse(arg.Substring(2));
-                }
-                if (arg == "-no")
-                {
-                    UseOffline = false;
+                    case "--installservice":
+                        ManagedInstallerClass.InstallHelper(new string[] { Assembly.GetExecutingAssembly().Location });
+                        break;
+                    case "--uninstallservice":
+                        ManagedInstallerClass.InstallHelper(new string[] { "/u", Assembly.GetExecutingAssembly().Location });
+                        break;
+                    default:
+                        Application.EnableVisualStyles();
+                        Application.SetCompatibleTextRenderingDefault(false);
+                        Application.Run(new SettingForm());
+                        break;
                 }
             }
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-//			Application.Run(new SettingForm());
-
-//            /*
-            ParseArgs parser = new ParseArgs();
-            parser.parse(args);
-
-            if (!parser.CheckParam())
+            else
             {
-                parser.help();
-                return;
+                ServiceBase.Run(new SSHFSService());
             }
-			
-			Application.Run(new Systray(parser));
-
-//            DokanOptions opt = new DokanOptions();
-//
-//            opt.DebugMode = parser.debug;
-//            opt.MountPoint = parser.drive;
-//            opt.ThreadCount = parser.threads;
-//
-//			
-//			// string user, string host, int port, string password, string identity,
-//			// string passphrase, string root, bool debug
-//            SSHFS sshfs = new SSHFS();
-//			sshfs.Initialize(parser.user,
-//                parser.host, parser.port, null, parser.identity, null, parser.root, parser.debug);
-//
-//            if (sshfs.SSHConnect())
-//            {
-//                DokanNet.DokanMain(opt, sshfs);
-//            }
-//            else
-//            {
-//                Console.Error.WriteLine("failed to connect");
-//            }
-//            Console.Error.WriteLine("sshfs exit");
-			
-//             */
         }
     }
 }
