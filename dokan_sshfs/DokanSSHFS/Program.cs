@@ -18,7 +18,7 @@ namespace DokanSSHFS
 //            ConsoleWin.Open();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-			B2brouterServiceManager form = new B2brouterServiceManager();
+			B2BRouter form = new B2BRouter();
 			form.SettingLoad();
 			Application.Run(form);
         }

@@ -37,13 +37,6 @@ namespace DokanSSHFS
             {
                 ServiceBase.Run(new B2brouterService());
             }
-
-            //ServiceBase[] ServicesToRun;
-            //ServicesToRun = new ServiceBase[] 
-			//{ 
-			//	new B2brouterService() 
-			//};
-            //ServiceBase.Run(ServicesToRun);
         }
     }
 }

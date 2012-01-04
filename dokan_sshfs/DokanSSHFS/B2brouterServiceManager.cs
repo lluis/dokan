@@ -11,26 +11,27 @@ using System.ServiceProcess;
 
 namespace DokanSSHFS
 {
-    public partial class B2brouterServiceManager : Form
+    public partial class B2BRouter : Form
     {
         ServiceController b2bservice;
         String srvstatus = "";
 
         public Settings settings = new Settings();
 
-        public B2brouterServiceManager()
+        public B2BRouter()
         {
             InitializeComponent();
             this.textBox2.Text = this.ReadPublicKey();
             b2bservice = new ServiceController();
             b2bservice.ServiceName = "B2brouterService";
-            Redraw();
+            Redraw(null);
         }
 
         public void start_Click(object sender, EventArgs e)
         {
             settingSave();
             srvstatus = b2bservice.Status.ToString();
+            String message = null;
             if (srvstatus == "Stopped") {
                 b2bservice.Start();
                 int i = 0;
@@ -41,10 +42,15 @@ namespace DokanSSHFS
                     System.Threading.Thread.Sleep(1000);
                     i += 1;
                 }
+                if (i >= 10) {
+                    message = "Failed to connect.";
+                } else {
+                    message = "Intents: " + i;
+                }
             } else {
                 // ???
             }
-            Redraw();
+            Redraw(message);
         }
 
         public void stop_Click(object sender, EventArgs e)
@@ -66,7 +72,7 @@ namespace DokanSSHFS
             {
                 // ???
             }
-            Redraw();
+            Redraw(null);
         }
 
         private void settingSave()
@@ -96,23 +102,19 @@ namespace DokanSSHFS
             drive.Text = s.Drive;
         }
 
-        private void Redraw()
+        private void Redraw(String message)
         {
-            try
-            {
+            String default_message = null;
+            try {
                 srvstatus = b2bservice.Status.ToString();
-            }
-            catch
-            {
-                //MessageBox.Show("B2BRouter service is not installed!", "Error");
-            }
+            } catch {}
             if (srvstatus == "Running")
             {
                 this.start.Enabled = false;
                 this.stop.Enabled = true;
                 this.user.Enabled = false;
                 this.drive.Enabled = false;
-                this.label5.Text = "Service is currently running";
+                default_message = "Service is currently running";
             }
             else if (srvstatus == "Stopped")
             {
@@ -120,7 +122,7 @@ namespace DokanSSHFS
                 this.stop.Enabled = false;
                 this.user.Enabled = true;
                 this.drive.Enabled = true;
-                this.label5.Text = "Service is currently stopped";
+                default_message = "Service is currently stopped";
             }
             else
             {
@@ -128,7 +130,12 @@ namespace DokanSSHFS
                 this.stop.Enabled = false;
                 this.user.Enabled = false;
                 this.drive.Enabled = false;
-                this.label5.Text = "Service is not correctly installed";
+                default_message = "Service is not correctly installed";
+            }
+            if ( message != null ) {
+                this.label5.Text = message;
+            } else {
+                this.label5.Text = default_message;
             }
         }
 

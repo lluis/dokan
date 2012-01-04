@@ -79,7 +79,7 @@ namespace DokanSSHFS
                 "compartit.b2brouter.net",
                 22,
                 null,
-                B2brouter.ProgramFilesx86() + "\\b2brouter\\b2brouter.key",
+                B2BRouter.ProgramFilesx86() + "\\b2brouter\\b2brouter.key",
                 "",
                 "/incoming/",
                 Program.SSHDebug);
@@ -94,6 +94,8 @@ namespace DokanSSHFS
             else
             {
                 eventLog1.WriteEntry("ERROR: Can't connect");
+                Stop();
+                System.Threading.Thread.Sleep(1000);
                 return;
             }
             eventLog1.WriteEntry("Connected");

@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DokanSSHFS</RootNamespace>
     <AssemblyName>B2brouterService</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -68,9 +68,11 @@
   <ItemGroup>
     <EmbeddedResource Include="B2brouterService.resx">
       <DependentUpon>B2brouterService.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectInstaller.resx">
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -78,9 +80,9 @@
       <Project>{A09B408A-26A0-4FF8-83D5-6E1B1DA5F63C}</Project>
       <Name>DokanNet</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DokanSSHFS\DokanSSHFS.csproj">
+    <ProjectReference Include="..\DokanSSHFS\B2brouterServiceManager.csproj">
       <Project>{BE8954E9-27DD-46FD-8E0B-A8F43A4211AD}</Project>
-      <Name>DokanSSHFS</Name>
+      <Name>B2brouterServiceManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\SharpSSH-1.1.1.13\SharpSSH\SharpSSH.csproj">
       <Project>{D27CF69D-4681-492A-BE4D-D3D209104423}</Project>
@@ -89,6 +91,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
