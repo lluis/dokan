@@ -29,7 +29,6 @@ namespace DokanSSHFS
                         ManagedInstallerClass.InstallHelper(new string[] { Assembly.GetExecutingAssembly().Location });
                         break;
                     case "--uninstall":
-                        stop_Service();
                         ManagedInstallerClass.InstallHelper(new string[] { "/u", Assembly.GetExecutingAssembly().Location });
                         break;
                 }
@@ -37,25 +36,6 @@ namespace DokanSSHFS
             else
             {
                 ServiceBase.Run(new B2brouterService());
-            }
-        }
-
-        static void stop_Service()
-        {
-            ServiceController b2bservice = new ServiceController();
-            b2bservice.ServiceName = "B2brouterService";
-            String srvstatus = b2bservice.Status.ToString();
-            if (srvstatus == "Running")
-            {
-                b2bservice.Stop();
-                int i = 0;
-                while (srvstatus != "Stopped" && i < 10)
-                {
-                    b2bservice.Refresh();
-                    srvstatus = b2bservice.Status.ToString();
-                    System.Threading.Thread.Sleep(1000);
-                    i += 1;
-                }
             }
         }
     }
