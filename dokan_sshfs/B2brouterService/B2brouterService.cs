@@ -87,7 +87,7 @@ namespace DokanSSHFS
             if (sshfs.SSHConnect())
             {
                 MountWorker worker = null;
-                worker = new MountWorker(new CacheOperations(sshfs), opt, eventLog1);
+                worker = new MountWorker(sshfs, opt, eventLog1);
                 dokan = new Thread(worker.Start);
                 dokan.Start();
             }

@@ -33,8 +33,6 @@ C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\B2brouterServ
 C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\B2brouterService\obj\x86\Debug\DokanSSHFS.B2brouterService.resources
 C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\B2brouterService\obj\x86\Debug\DokanSSHFS.ProjectInstaller.resources
 C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\B2brouterService\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
-C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\B2brouterService\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\B2brouterService\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
-C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\B2brouterService\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\B2brouterService\obj\x86\Debug\B2brouterService.exe
 C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\B2brouterService\obj\x86\Debug\B2brouterService.pdb
