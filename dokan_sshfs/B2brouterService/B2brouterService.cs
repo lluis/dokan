@@ -84,19 +84,24 @@ namespace DokanSSHFS
                 "/incoming/",
                 Program.SSHDebug);
 
-            if (sshfs.SSHConnect())
+            Boolean connected = false;
+            while (!connected)
             {
-                MountWorker worker = null;
-                worker = new MountWorker(sshfs, opt, eventLog1);
-                dokan = new Thread(worker.Start);
-                dokan.Start();
-            }
-            else
-            {
-                eventLog1.WriteEntry("ERROR: Can't connect");
-                Stop();
-                System.Threading.Thread.Sleep(1000);
-                return;
+                if (sshfs.SSHConnect())
+                {
+                    connected = true;
+                    MountWorker worker = null;
+                    worker = new MountWorker(sshfs, opt, eventLog1);
+                    dokan = new Thread(worker.Start);
+                    dokan.Start();
+                }
+                else
+                {
+                    eventLog1.WriteEntry("ERROR: Can't connect");
+                    //Stop();
+                    System.Threading.Thread.Sleep(5000);
+                    //return;
+                }
             }
             eventLog1.WriteEntry("Connected");
         }
@@ -121,6 +126,10 @@ namespace DokanSSHFS
                 // This should be called from Dokan, but not called.
                 // Call here explicitly.
                 sshfs.Unmount(null);
+            }
+            else
+            {
+                B2BRouter.KillProcess();
             }
         }
 
@@ -170,7 +179,7 @@ namespace DokanSSHFS
                         msg = "Dokan drive letter assign error";
                         break;
                     case DokanNet.DOKAN_START_ERROR:
-                        msg = "Dokan driver error ,please reboot";
+                        msg = "Dokan driver error, please reboot";
                         break;
                 }
                 logger_.WriteEntry("ERROR: Can't connect ("+msg+")");

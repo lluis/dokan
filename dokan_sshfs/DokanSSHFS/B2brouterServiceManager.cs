@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.ServiceProcess;
+using System.Diagnostics;
 
 namespace DokanSSHFS
 {
@@ -51,7 +52,8 @@ namespace DokanSSHFS
             } else {
                 // ???
             }
-            Redraw(message);
+            //Redraw(message);
+            Redraw();
             this.progressBar1.Visible = false;
         }
 
@@ -71,6 +73,12 @@ namespace DokanSSHFS
                     System.Threading.Thread.Sleep(1000);
                     i += 1;
                 }
+            }
+            else if ( srvstatus == "StartPending" ){
+                KillProcess();
+                b2bservice.Refresh();
+                srvstatus = b2bservice.Status.ToString();
+                System.Threading.Thread.Sleep(1000);
             }
             else
             {
@@ -131,6 +139,15 @@ namespace DokanSSHFS
                 this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
                 default_message = "Service is currently stopped";
             }
+            else if (srvstatus == "StartPending")
+            {
+                this.start.Enabled = false;
+                this.stop.Enabled = true;
+                this.user.Enabled = false;
+                this.drive.Enabled = false;
+                this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+                default_message = "Service is trying to connect";
+            }
             else
             {
                 this.start.Enabled = false;
@@ -138,7 +155,7 @@ namespace DokanSSHFS
                 this.user.Enabled = false;
                 this.drive.Enabled = false;
                 this.label5.ForeColor = System.Drawing.Color.Firebrick;
-                default_message = "Service is not correctly installed";
+                default_message = "Service is not correctly installed (" + srvstatus + ")";
             }
             if ( message != null ) {
                 this.label5.ForeColor = System.Drawing.Color.Firebrick;
@@ -165,6 +182,26 @@ namespace DokanSSHFS
                 return Environment.GetEnvironmentVariable("ProgramFiles(x86)");
             }
             return Environment.GetEnvironmentVariable("ProgramFiles");
+        }
+
+        public static void KillProcess()
+        {
+            foreach (Process p in System.Diagnostics.Process.GetProcessesByName("B2brouterService"))
+            {
+                try
+                {
+                    p.Kill();
+                    p.WaitForExit(); // possibly with a timeout
+                }
+                catch (Win32Exception winException)
+                {
+                    // process was terminating or can't be terminated - deal with it
+                }
+                catch (InvalidOperationException invalidException)
+                {
+                    // process has already exited - might be able to let this one go
+                }
+            }
         }
     }
 }
