@@ -36,11 +36,14 @@
             this.b2brouterProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
             this.b2brouterProcessInstaller.Password = null;
             this.b2brouterProcessInstaller.Username = null;
+            this.b2brouterProcessInstaller.AfterInstall += new System.Configuration.Install.InstallEventHandler(this.b2brouterProcessInstaller_AfterInstall);
             // 
             // b2brouterInstaller
             // 
             this.b2brouterInstaller.ServiceName = "B2brouterService";
             this.b2brouterInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
+            this.b2brouterInstaller.AfterInstall += new System.Configuration.Install.InstallEventHandler(this.b2brouterInstaller_AfterInstall);
+            this.b2brouterInstaller.ServicesDependedOn = new string[] { "Tcpip" };
             // 
             // ProjectInstaller
             // 

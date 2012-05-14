@@ -15,5 +15,15 @@ namespace DokanSSHFS
         {
             InitializeComponent();
         }
+
+        private void b2brouterProcessInstaller_AfterInstall(object sender, InstallEventArgs e)
+        {
+
+        }
+
+        private void b2brouterInstaller_AfterInstall(object sender, InstallEventArgs e)
+        {
+
+        }
     }
 }

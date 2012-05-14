@@ -15,8 +15,6 @@ C:\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\B2brouterServiceManager.p
 C:\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\DokanSSHFS.Properties.Resources.resources
 C:\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\GenerateResource-ResGen.read.4.tlog
 C:\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\DokanSSHFS.B2BRouter.resources
-C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\B2brouterServiceManager.exe
-C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\B2brouterServiceManager.pdb
 C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Debug\B2brouterServiceManager.exe
 C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Debug\B2brouterServiceManager.pdb
 C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Debug\DokanNet.dll
@@ -32,3 +30,5 @@ C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\DokanSSHFS\ob
 C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
 C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\GenerateResource-ResGen.read.4.tlog
 C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\B2brouterServiceManager.exe
+C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\B2brouterServiceManager.pdb
