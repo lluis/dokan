@@ -15,5 +15,16 @@ namespace DokanSSHFS
         {
             InitializeComponent();
         }
+
+        private void serviceProcessInstaller_AfterInstall(object sender, InstallEventArgs e)
+        {
+
+        }
+
+        private void serviceInstaller1_AfterInstall(object sender, InstallEventArgs e)
+        {
+
+        }
+
     }
 }
