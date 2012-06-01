@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "DokanSSHFS"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.1"
 #define MyAppExeName "DokanSSHFS.exe"
 
 [Setup]
@@ -34,6 +34,9 @@ Source: "..\DokanSSHFS\bin\x86\Release\Org.Mentalis.Security.dll"; DestDir: "{ap
 Source: "..\DokanSSHFS\bin\x86\Release\Tamir.SharpSSH.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\DokanSSHFS\notify3.ico"; DestDir: "{app}\"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
+
+[Dirs]
+Name: "{app}\"; Permissions: everyone-modify
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\notify3.ico"

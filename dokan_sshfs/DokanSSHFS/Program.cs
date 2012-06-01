@@ -14,7 +14,7 @@ namespace DokanSSHFS
         public static ushort DokanThread = 0;
         public static bool UseOffline = true;
 
-        //[STAThread]
+        [STAThread]
         static void Main(String[] args)
         {
             if (System.Environment.UserInteractive)
