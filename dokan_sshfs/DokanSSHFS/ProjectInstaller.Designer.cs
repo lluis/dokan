@@ -41,6 +41,7 @@
             // 
             this.serviceInstaller1.ServiceName = "SSHFSService";
             this.serviceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
+            this.serviceInstaller1.ServicesDependedOn = new string[] { "Tcpip" };
             // 
             // ProjectInstaller
             // 
