@@ -167,7 +167,8 @@ namespace DokanSSHFS
             {
                 eventLog1_.WriteEntry("ERROR: " + e.ToString());
                 Debug(e.ToString());
-                return false;
+                //return false;
+                throw e;
             }
         }
 
@@ -197,15 +198,24 @@ namespace DokanSSHFS
 
                 trycount_++;
 
-                if (SSHConnect())
+                try
                 {
-                    Debug("Reconnect success\n");
-                    connectionError_ = false;
-                    return true;
+                    if (SSHConnect())
+                    {
+                        Debug("Reconnect success\n");
+                        connectionError_ = false;
+                        return true;
+                    }
+                    else
+                    {
+                        Debug("Reconnect failed\n");
+                        return false;
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    Debug("Reconnect failed\n");
+                    eventLog1_.WriteEntry("ERROR: " + e.ToString());
+                    Debug(e.ToString());
                     return false;
                 }
             }

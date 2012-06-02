@@ -57,26 +57,62 @@ namespace DokanSSHFS
                 curr_settings.ServerRoot,
                 DokanSSHFS.SSHDebug);
 
-            if (sshfs.SSHConnect())
-            {
-                MountWorker worker = null;
-                if (curr_settings.DisableCache)
-                {
-                    worker = new MountWorker(sshfs, opt);
-                }
-                else
-                {
-                    worker = new MountWorker(new CacheOperations(sshfs), opt);
-                }
+            int retries = 0;
+            Boolean connected = false;
 
-                dokan = new Thread(worker.Start);
-                dokan.Start();
-            }
-            else
+            while (!connected && retries < 10)
             {
-                eventLog1.WriteEntry("ERROR: Can't connect");
+                retries++;
+                try
+                {
+                    if (sshfs.SSHConnect())
+                    {
+                        connected = true;
+                        MountWorker worker = null;
+                        if (curr_settings.DisableCache)
+                        {
+                            worker = new MountWorker(sshfs, opt);
+                        }
+                        else
+                        {
+                            worker = new MountWorker(new CacheOperations(sshfs), opt);
+                        }
+
+                        dokan = new Thread(worker.Start);
+                        dokan.Start();
+                    }
+                    else
+                    {
+                        eventLog1.WriteEntry("ERROR: Can't connect");
+                        Stop();
+                        System.Threading.Thread.Sleep(1000);
+                        return;
+                    }
+                }
+                catch (Tamir.SharpSsh.jsch.JSchException e)
+                {
+                    if (e.Message.StartsWith("System.Net.Sockets.SocketException: A socket operation was attempted to an unreachable network "))
+                    {
+                        eventLog1.WriteEntry("ERROR: Can't connect, maybe network is down, attempt " + retries);
+                        System.Threading.Thread.Sleep(3000);
+                    }
+                    else
+                    {
+                        Stop();
+                        System.Threading.Thread.Sleep(1000);
+                        return;
+                    }
+                }
+                catch (Exception)
+                {
+                    Stop();
+                    System.Threading.Thread.Sleep(1000);
+                    return;
+                }
+            }
+            if (!connected)
+            {
                 Stop();
-                System.Threading.Thread.Sleep(1000);
                 return;
             }
         }

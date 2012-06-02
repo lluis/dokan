@@ -3,3 +3,8 @@ C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_net\
 C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_net\DokanNet\obj\x86\Release\ResolveAssemblyReference.cache
 C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_net\DokanNet\obj\x86\Release\DokanNet.dll
 C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_net\DokanNet\obj\x86\Release\DokanNet.pdb
+C:\Users\tictacbum\projects\dokan\dokan_net\DokanNet\bin\x86\Release\DokanNet.dll
+C:\Users\tictacbum\projects\dokan\dokan_net\DokanNet\bin\x86\Release\DokanNet.pdb
+C:\Users\tictacbum\projects\dokan\dokan_net\DokanNet\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\tictacbum\projects\dokan\dokan_net\DokanNet\obj\x86\Release\DokanNet.dll
+C:\Users\tictacbum\projects\dokan\dokan_net\DokanNet\obj\x86\Release\DokanNet.pdb
