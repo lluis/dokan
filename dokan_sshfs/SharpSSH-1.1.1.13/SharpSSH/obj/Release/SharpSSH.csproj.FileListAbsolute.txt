@@ -7,8 +7,6 @@ C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshf
 C:\Users\tictacbum\projects\dokan\dokan_sshfs\SharpSSH-1.1.1.13\bin\Release\Tamir.SharpSSH.dll
 C:\Users\tictacbum\projects\dokan\dokan_sshfs\SharpSSH-1.1.1.13\SharpSSH\obj\Release\ResolveAssemblyReference.cache
 C:\Users\tictacbum\projects\dokan\dokan_sshfs\SharpSSH-1.1.1.13\SharpSSH\obj\Release\Tamir.SharpSsh.jsch.examples.InputForm.resources
-C:\Users\tictacbum\projects\dokan\dokan_sshfs\SharpSSH-1.1.1.13\SharpSSH\obj\Release\GenerateResource-ResGen.read.1.tlog
 C:\Users\tictacbum\projects\dokan\dokan_sshfs\SharpSSH-1.1.1.13\SharpSSH\obj\Release\ResGen.read.1.tlog
-C:\Users\tictacbum\projects\dokan\dokan_sshfs\SharpSSH-1.1.1.13\SharpSSH\obj\Release\GenerateResource-ResGen.write.1.tlog
 C:\Users\tictacbum\projects\dokan\dokan_sshfs\SharpSSH-1.1.1.13\SharpSSH\obj\Release\ResGen.write.1.tlog
 C:\Users\tictacbum\projects\dokan\dokan_sshfs\SharpSSH-1.1.1.13\SharpSSH\obj\Release\Tamir.SharpSSH.dll

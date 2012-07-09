@@ -39,11 +39,31 @@ namespace DokanSSHFS
 
             opt.DebugMode = DokanSSHFS.DokanDebug;
             opt.UseAltStream = true;
-            opt.MountPoint = "n:\\";
+            //opt.MountPoint = "n:\\";
             opt.ThreadCount = 0;
             opt.UseKeepAlive = true;
-
             opt.ThreadCount = DokanSSHFS.DokanThread;
+
+            String drive = curr_settings.Drive;
+            if (drive.Length == 1)
+            {
+                char letter = drive[0];
+                letter = Char.ToLower(letter);
+                if ('e' <= letter && letter <= 'z')
+                {
+                    opt.MountPoint = string.Format("{0}:\\", letter);
+                }
+                else
+                {
+                    eventLog1.WriteEntry("ERROR: Bad mount drive (" + drive + ") falling back to default (N)");
+                    opt.MountPoint = "n:\\";
+                }
+            }
+            else
+            {
+                eventLog1.WriteEntry("ERROR: Bad mount drive (" + drive + ") falling back to default (N)");
+                opt.MountPoint = "n:\\";
+            }
 
             DokanSSHFS.UseOffline = !curr_settings.WithoutOfflineAttribute;
 

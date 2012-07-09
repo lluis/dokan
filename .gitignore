@@ -9,3 +9,4 @@
 *.usertasks
 # ignore test results
 test-results/
+*.tlog

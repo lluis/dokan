@@ -14,8 +14,6 @@ C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshf
 C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Release\DokanSSHFS.pdb
 C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Release\DokanSSHFS.ProjectInstaller.resources
 C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Release\DokanSSHFS.SSHFSService.resources
-C:\Users\tictacbum\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Release\DokanSSHFS.exe
-C:\Users\tictacbum\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Release\DokanSSHFS.pdb
 C:\Users\tictacbum\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Release\DokanSSHFS.exe
 C:\Users\tictacbum\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Release\DokanSSHFS.pdb
 C:\Users\tictacbum\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Release\DokanNet.dll
@@ -28,7 +26,7 @@ C:\Users\tictacbum\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Release\Resolve
 C:\Users\tictacbum\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Release\DokanSSHFS.ProjectInstaller.resources
 C:\Users\tictacbum\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Release\DokanSSHFS.SettingForm.resources
 C:\Users\tictacbum\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Release\DokanSSHFS.SSHFSService.resources
-C:\Users\tictacbum\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Release\GenerateResource-ResGen.read.1.tlog
 C:\Users\tictacbum\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Release\ResGen.read.1.tlog
-C:\Users\tictacbum\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Release\GenerateResource-ResGen.write.1.tlog
 C:\Users\tictacbum\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\tictacbum\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Release\DokanSSHFS.exe
+C:\Users\tictacbum\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Release\DokanSSHFS.pdb

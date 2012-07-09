@@ -311,10 +311,6 @@
             // 
             this.drive.FormattingEnabled = true;
             this.drive.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
             "E",
             "F",
             "G",
