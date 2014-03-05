@@ -32,3 +32,20 @@ C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\DokanSSHFS\ob
 C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
 C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\B2brouterServiceManager.exe
 C:\Documents and Settings\Administrador\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\B2brouterServiceManager.pdb
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\B2brouterServiceManager.exe
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\B2brouterServiceManager.pdb
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Debug\B2brouterServiceManager.exe
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Debug\B2brouterServiceManager.pdb
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Debug\DokanNet.dll
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Debug\Tamir.SharpSSH.dll
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Debug\DiffieHellman.dll
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Debug\Org.Mentalis.Security.dll
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Debug\DokanNet.pdb
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\bin\x86\Debug\Tamir.SharpSSH.pdb
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\DokanSSHFS.B2BRouter.resources
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\DokanSSHFS.Properties.Resources.resources
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\DokanSSHFS.SettingForm.resources
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\GenerateResource-ResGen.read.4.tlog
+C:\Documents and Settings\Administrador\Mis documentos\projects\dokan\dokan_sshfs\DokanSSHFS\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog

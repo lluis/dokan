@@ -30,30 +30,47 @@ namespace DokanSSHFS
 
         public void start_Click(object sender, EventArgs e)
         {
-            this.progressBar1.Visible = true;
-            settingSave();
-            srvstatus = b2bservice.Status.ToString();
             String message = null;
-            if (srvstatus == "Stopped") {
-                b2bservice.Start();
-                int i = 0;
-                this.progressBar1.Value = i * 10;
-                while (srvstatus != "Running" && i < 10)
-                {
-                    this.progressBar1.Value = i * 10;
-                    b2bservice.Refresh();
-                    srvstatus = b2bservice.Status.ToString();
-                    System.Threading.Thread.Sleep(1000);
-                    i += 1;
-                }
-                if (i >= 10) {
-                    message = "Failed to connect.";
-                }
-            } else {
-                // ???
+            if (user.Text == "")
+            {
+                // do not start service if user is blank!
+                message = "Please enter your username.";
             }
-            //Redraw(message);
-            Redraw();
+            else
+            {
+                this.progressBar1.Visible = true;
+                settingSave();
+                srvstatus = b2bservice.Status.ToString();
+                if (srvstatus == "Stopped")
+                {
+                    b2bservice.Start();
+                    int i = 0;
+                    this.progressBar1.Value = i * 10;
+                    while (srvstatus != "Running" && i < 10)
+                    {
+                        this.progressBar1.Value = i * 10;
+                        b2bservice.Refresh();
+                        srvstatus = b2bservice.Status.ToString();
+                        System.Threading.Thread.Sleep(1000);
+                        i += 1;
+                    }
+                    if (i >= 10)
+                    {
+                        message = "Failed to connect.";
+                    } 
+                    else 
+                    {
+                        // don't draw connected in red...
+                        //message = "Connected.";
+                    }
+                }
+                else
+                {
+                    message = "Service is not stopped.";
+                }
+            }
+            Redraw(message);
+            //Redraw();
             this.progressBar1.Visible = false;
         }
 
