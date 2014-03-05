@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.ServiceProcess;
 using System.Diagnostics;
+using System.Security.Principal;
 
 namespace DokanSSHFS
 {
@@ -138,7 +139,16 @@ namespace DokanSSHFS
             try {
                 srvstatus = b2bservice.Status.ToString();
             } catch {}
-            if (srvstatus == "Running")
+            if (!new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator))
+            {
+                // user is not admin
+                this.start.Enabled = false;
+                this.stop.Enabled = false;
+                this.user.Enabled = false;
+                this.drive.Enabled = false;
+                message = "This program requires administrator privileges";
+            }
+            else if (srvstatus == "Running")
             {
                 this.start.Enabled = false;
                 this.stop.Enabled = true;
@@ -174,6 +184,7 @@ namespace DokanSSHFS
                 this.label5.ForeColor = System.Drawing.Color.Firebrick;
                 default_message = "Service is not correctly installed (" + srvstatus + ")";
             }
+
             if ( message != null ) {
                 this.label5.ForeColor = System.Drawing.Color.Firebrick;
                 this.label5.Text = message;
